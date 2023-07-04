@@ -10,8 +10,12 @@ import org.springframework.stereotype.Service
 class DeleteUserServiceImpl(private val userRepository: UserRepository) : DeleteUserUseCase {
 
     override fun execute(userId: Long) {
-        val user = userRepository.findByIdOrNull(userId) ?: throw NotFoundException()
-        userRepository.delete(user)
+        return userRepository.findByIdOrNull(userId).let {
+            it?.let {
+                userRepository.delete(it)
+            } ?: throw NotFoundException()
+        }
+
     }
 
 

@@ -12,8 +12,11 @@ import org.springframework.stereotype.Service
 class GetUserByIdServiceImpl(private val userRepository: UserRepository) : GetUserByIdUseCase{
 
     override fun execute(userid: Long): UserDTO? {
-        val user = userRepository.findByIdOrNull(userid) ?: throw NotFoundException()
-        return user?.let { UserMapper.mapToDto(user = it) }
+        return userRepository.findByIdOrNull(userid).let {
+            it?.let {
+                UserMapper.mapToDto(user = it)
+            } ?: throw NotFoundException()
+        }
     }
 
 }

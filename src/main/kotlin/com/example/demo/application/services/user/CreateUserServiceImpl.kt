@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service
 @Service
 class CreateUserServiceImpl(private val userRepository: UserRepository) : CreateUserUseCase {
     override fun execute(userDTO: UserDTO){
-        val user = userDTO.name?.let { userRepository.findByName(it) }
-
-        if(user?.name == userDTO.name && user?.email == userDTO.email){
-            throw DuplicateValueException()
+        userDTO.name?.let { userRepository.findByName(name = it) }.let {
+            if (it != null && (it.name == userDTO.name && it.email == userDTO.email)){
+                throw DuplicateValueException()
+            }else{
+                userRepository.save(UserMapper.mapToDomain(dto = userDTO))
+            }
         }
-
-        userRepository.save(UserMapper.mapToDomain(dto = userDTO))
     }
 }

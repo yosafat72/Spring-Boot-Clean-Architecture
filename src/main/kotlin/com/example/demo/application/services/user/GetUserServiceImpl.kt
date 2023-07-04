@@ -13,9 +13,9 @@ import java.util.stream.Collectors
 class GetUserServiceImpl(private val userRepository: UserRepository) : GetUsersUseCase{
 
     override fun execute(page: Int): List<UserDTO> {
-        val data = userRepository.findAll(PageRequest.of(page, 10))
-        val result: List<User> = data.get().collect(Collectors.toList())
-        return result.map { UserMapper.mapToDto(user = it) }
+        val users = userRepository.findAll(PageRequest.of(page, 10)).get().collect(Collectors.toList())
+        return users.map { UserMapper.mapToDto(user = it) }
+
     }
 
 }

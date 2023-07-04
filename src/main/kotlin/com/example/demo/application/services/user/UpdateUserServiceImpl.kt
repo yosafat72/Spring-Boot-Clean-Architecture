@@ -10,11 +10,13 @@ import org.springframework.stereotype.Service
 @Service
 class UpdateUserServiceImpl(private val userRepository: UserRepository) : UpdateUserUseCase{
     override fun execute(userDTO: UserDTO, userId: Long) {
-        val user = userRepository.findByIdOrNull(userId) ?: throw NotFoundException()
-
-        user.name = userDTO.name
-        user.email = userDTO.email
-
-        userRepository.save(user)
+        userRepository.findByIdOrNull(userId)?.apply {
+            name = userDTO.name
+            email = userDTO.email
+        }.let { user ->
+            user?.let {
+                userRepository.save(it)
+            } ?: throw NotFoundException()
+        }
     }
 }
