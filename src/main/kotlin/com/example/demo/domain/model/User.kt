@@ -16,8 +16,8 @@ data class User(
     val id: Long? = 0,
 
     @Column(name = "name")
-    val name: String? = "",
+    var name: String? = "",
 
     @Column(name = "email")
-    val email: String? = "",
+    var email: String? = "",
 )

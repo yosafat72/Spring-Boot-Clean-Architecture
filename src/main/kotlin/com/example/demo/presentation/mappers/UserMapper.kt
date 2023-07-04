@@ -3,6 +3,7 @@ package com.example.demo.presentation.mappers
 import com.example.demo.domain.model.User
 import com.example.demo.presentation.dtos.user.UserDTO
 import com.example.demo.presentation.dtos.user.request.CreateUserRequest
+import com.example.demo.presentation.dtos.user.request.UpdateUserRequest
 import org.springframework.stereotype.Component
 
 @Component
@@ -24,7 +25,14 @@ object UserMapper {
         )
     }
 
-    fun mapRequestToDto(request: CreateUserRequest) : UserDTO{
+    fun mapCreateRequestToDto(request: CreateUserRequest) : UserDTO{
+        return UserDTO(
+            name = request.name,
+            email = request.email
+        )
+    }
+
+    fun mapUpdateRequestToDto(request: UpdateUserRequest) : UserDTO{
         return UserDTO(
             name = request.name,
             email = request.email
