@@ -1,0 +1,26 @@
+package com.example.demo.presentation.mappers
+
+import com.example.demo.domain.model.User
+import com.example.demo.presentation.dtos.UserDTO
+import org.springframework.stereotype.Component
+
+@Component
+object UserMapper {
+
+    fun mapToDto(user: User): UserDTO {
+        return UserDTO(
+                id = user.id,
+                name = user.name,
+                email = user.email
+        )
+    }
+
+    fun mapToDomain(dto: UserDTO): User {
+        return User(
+                id = dto.id,
+                name = dto.name,
+                email = dto.email
+        )
+    }
+
+}
