@@ -2,7 +2,7 @@ package com.example.demo.application.services.user
 
 import com.example.demo.application.usecases.user.GetUserByIdUseCase
 import com.example.demo.domain.repository.UserRepository
-import com.example.demo.presentation.dtos.UserDTO
+import com.example.demo.presentation.dtos.user.UserDTO
 import com.example.demo.presentation.exceptions.NotFoundException
 import com.example.demo.presentation.mappers.UserMapper
 import org.springframework.data.repository.findByIdOrNull

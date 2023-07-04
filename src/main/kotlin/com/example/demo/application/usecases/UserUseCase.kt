@@ -1,6 +1,6 @@
 package com.example.demo.application.usecases
 
-import com.example.demo.presentation.dtos.UserDTO
+import com.example.demo.presentation.dtos.user.UserDTO
 
 interface UserUseCase {
     fun createUser(userDTO: UserDTO)

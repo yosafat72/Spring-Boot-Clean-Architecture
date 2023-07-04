@@ -3,7 +3,7 @@ package com.example.demo.application.services.user
 import com.example.demo.application.usecases.user.GetUsersUseCase
 import com.example.demo.domain.model.User
 import com.example.demo.domain.repository.UserRepository
-import com.example.demo.presentation.dtos.UserDTO
+import com.example.demo.presentation.dtos.user.UserDTO
 import com.example.demo.presentation.mappers.UserMapper
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service

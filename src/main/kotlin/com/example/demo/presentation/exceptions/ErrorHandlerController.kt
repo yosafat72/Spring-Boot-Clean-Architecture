@@ -18,4 +18,13 @@ class ErrorHandlerController {
         )
     }
 
+    @ExceptionHandler(DuplicateValueException::class)
+    @ResponseStatus(HttpStatus.OK)
+    fun duplicateValueException(duplicateValueException: DuplicateValueException) : GenericResponse<String>{
+        return GenericResponse(
+            status = false,
+            message = "Duplicate data value"
+        )
+    }
+
 }
